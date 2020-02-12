@@ -36,6 +36,7 @@
     <dependency>
       <groupId>com.twitter</groupId>
       <artifactId>finagle-core_2.11</artifactId>
+      <version>19.11.0</version>
     </dependency>
   </dependencies>
 </project>
