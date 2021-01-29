@@ -23,7 +23,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.apache.bookkeeper</groupId>
-  <version>4.11.1</version>
+  <version>4.11.2</version>
   <artifactId>bookkeeper</artifactId>
   <packaging>pom</packaging>
   <name>Apache BookKeeper :: Parent</name>
@@ -130,7 +130,7 @@
     <freebuilder.version>1.14.9</freebuilder.version>
     <google.code.version>3.0.2</google.code.version>
     <google.errorprone.version>2.1.2</google.errorprone.version>
-    <grpc.version>1.18.0</grpc.version>
+    <grpc.version>1.31.0</grpc.version>
     <guava.version>21.0</guava.version>
     <kerby.version>1.1.1</kerby.version>
     <hadoop.version>2.7.3</hadoop.version>
