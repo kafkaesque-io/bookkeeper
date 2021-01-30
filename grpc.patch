@@ -1,0 +1,29 @@
+diff --git a/stream/clients/java/base/src/main/java/org/apache/bookkeeper/clients/impl/channel/StorageServerChannel.java b/stream/clients/java/base/src/main/java/org/apache/bookkeeper/clients/impl/channel/StorageServerChannel.java
+index afacce18b..105d365e7 100644
+--- a/stream/clients/java/base/src/main/java/org/apache/bookkeeper/clients/impl/channel/StorageServerChannel.java
++++ b/stream/clients/java/base/src/main/java/org/apache/bookkeeper/clients/impl/channel/StorageServerChannel.java
+@@ -97,11 +97,19 @@ public class StorageServerChannel implements AutoCloseable {
+                                 EndpointResolver endpointResolver) {
+         this.token = token;
+         Endpoint resolvedEndpoint = endpointResolver.resolve(endpoint);
+-        this.channel = ManagedChannelBuilder.forAddress(
+-            resolvedEndpoint.getHostname(),
+-            resolvedEndpoint.getPort())
+-            .usePlaintext(usePlainText)
+-            .build();
++
++        if (usePlainText) {
++            this.channel = ManagedChannelBuilder.forAddress(
++                resolvedEndpoint.getHostname(),
++                resolvedEndpoint.getPort())
++                .usePlaintext()
++                .build();
++        } else {
++            this.channel = ManagedChannelBuilder.forAddress(
++                resolvedEndpoint.getHostname(),
++                resolvedEndpoint.getPort())
++                .build();
++        }
+         this.interceptedServerChannel = null;
+     }
+ 

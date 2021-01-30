@@ -97,11 +97,19 @@ public class StorageServerChannel implements AutoCloseable {
                                 EndpointResolver endpointResolver) {
         this.token = token;
         Endpoint resolvedEndpoint = endpointResolver.resolve(endpoint);
-        this.channel = ManagedChannelBuilder.forAddress(
-            resolvedEndpoint.getHostname(),
-            resolvedEndpoint.getPort())
-            .usePlaintext(usePlainText)
-            .build();
+
+        if (usePlainText) {
+            this.channel = ManagedChannelBuilder.forAddress(
+                resolvedEndpoint.getHostname(),
+                resolvedEndpoint.getPort())
+                .usePlaintext()
+                .build();
+        } else {
+            this.channel = ManagedChannelBuilder.forAddress(
+                resolvedEndpoint.getHostname(),
+                resolvedEndpoint.getPort())
+                .build();
+        }
         this.interceptedServerChannel = null;
     }
 
